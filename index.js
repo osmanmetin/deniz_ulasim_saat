@@ -1,3 +1,6 @@
+
+//Htmlden aldım
+
 let saat = document.querySelector(".saat");
 let tarih = document.querySelector(".tarih");
 let vapur_saat = document.querySelector(".vapur_saat");
@@ -51,6 +54,8 @@ function dondur() {
   return arr;
 }
 
+// Sefer saatleri gösteren buton event
+
 function vapursaat() {
   items = dondur().reverse();
   div = document.createElement("div");
@@ -64,6 +69,7 @@ function vapursaat() {
   });
 }
 
+//En yakın seferin bulınması
 function hesap(saat_dizi) {
   let date = new Date();
   date = date.toString().split(" ");
@@ -77,6 +83,9 @@ function hesap(saat_dizi) {
     return saat_dizi[index + 1];
   }
 }
+
+//İşten çıkış yaptım butonu 
+
 function istencikis() {
   a = dondur().reverse();
   hesap = hesap(a);
