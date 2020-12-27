@@ -52,10 +52,10 @@ function dondur() {
 }
 
 function vapursaat() {
-  a = dondur().reverse();
+  items = dondur().reverse();
   div = document.createElement("div");
   div.setAttribute("class", "w-100  mt-2 text-center");
-  a.forEach(function (item) {
+  items.forEach(function (item) {
     span = document.createElement("span");
     span.setAttribute("class", "badge badge-success w-25 p-2 m-2");
     span.appendChild(document.createTextNode(item));
@@ -65,8 +65,7 @@ function vapursaat() {
 }
 
 function hesap(saat_dizi) {
-  let date = new Date('8/24/2010 22:02:10');
-
+  let date = new Date();
   date = date.toString().split(" ");
   date = date[4].slice(0, 5);
   saat_dizi.unshift(date);
@@ -93,28 +92,32 @@ function istencikis() {
     sonuc = `En Yakın Sefer Saat =  ${hesap}`;
     div.appendChild(document.createTextNode(sonuc));
     yakin_saat.appendChild(div);
-  
-  let varissaat = Number(hesap.split(":")[0]);
-  console.log(varissaat);
-  let varisdakika = Number(hesap.split(":")[1]);
-  console.log(varisdakika);
-  varisdakika = varisdakika + 20;
-              if (varisdakika > 60) {
-                varissaat = varissaat + 1;
-                varisdakika = varisdakika - 60;
-                varis=String(varissaat)+":"+String(varisdakika);
-                div = document.createElement("div");
-                div.setAttribute("class", "text-center border rounded bg-info mt-3 p-2 text-light");
-                div.appendChild(document.createTextNode(`Tahmini varış = ${varis}`));
-                yakin_saat.appendChild(div);
-              }
-              
-              else{
-                varis=String(varissaat)+":"+String(varisdakika);
-                div = document.createElement("div");
-                div.setAttribute("class", "text-center border rounded bg-info mt-3 p-2 text-light");
-                div.appendChild(document.createTextNode(`Tahmini varış =  ${varis}`));
-                yakin_saat.appendChild(div);
-              }
-            }
+
+    let varissaat = Number(hesap.split(":")[0]);
+    console.log(varissaat);
+    let varisdakika = Number(hesap.split(":")[1]);
+    console.log(varisdakika);
+    varisdakika = varisdakika + 20;
+    if (varisdakika > 60) {
+      varissaat = varissaat + 1;
+      varisdakika = varisdakika - 60;
+      varis = String(varissaat) + ":" + String(varisdakika);
+      div = document.createElement("div");
+      div.setAttribute(
+        "class",
+        "text-center border rounded bg-info mt-3 p-2 text-light"
+      );
+      div.appendChild(document.createTextNode(`Tahmini varış = ${varis}`));
+      yakin_saat.appendChild(div);
+    } else {
+      varis = String(varissaat) + ":" + String(varisdakika);
+      div = document.createElement("div");
+      div.setAttribute(
+        "class",
+        "text-center border rounded bg-info mt-3 p-2 text-light"
+      );
+      div.appendChild(document.createTextNode(`Tahmini varış =  ${varis}`));
+      yakin_saat.appendChild(div);
+    }
+  }
 }
