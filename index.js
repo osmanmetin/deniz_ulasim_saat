@@ -5,29 +5,29 @@ let yakin_saat = document.querySelector(".yakin_saat");
 let sefer_goster = document.querySelector(".sefer_goster");
 let enyakin_saat = document.querySelector(".enyakin_saat");
 
-// function deniz_ulasimi(turu, kisi_kapasite, sefer_suresi) {
-//   this.turu = turu;
-//   this.kisi_kapasite = kisi_kapasite;
-//   this.sefer_suresi = sefer_suresi;
-//   this.kisi_kapasite_kontrol = function () {
-//     if (this.turu === "vapur") {
-//       if (this.kisi_kapasite > 200) {
-//         return ("çok kalabalık binemezsin");
-//       }
-//       else{
-//         return ("uygun");
-//       }
-//     }
-//     else if(this.turu==="motor"){
-//       if (this.kisi_kapasite > 100) {
-//         return ("çok kalabalık binemezsin");
-//       }
-//       else{
-//         return ("uygun");
-//       }
-//     }
-//   };
-// }
+function deniz_ulasimi(turu, kisi_kapasite, sefer_suresi) {
+  this.turu = turu;
+  this.kisi_kapasite = kisi_kapasite;
+  this.sefer_suresi = sefer_suresi;
+  this.kisi_kapasite_kontrol = function () {
+    if (this.turu === "vapur") {
+      if (this.kisi_kapasite > 200) {
+        return ("çok kalabalık binemezsin");
+      }
+      else{
+        return ("uygun");
+      }
+    }
+    else if(this.turu==="motor"){
+      if (this.kisi_kapasite > 100) {
+        return ("çok kalabalık binemezsin");
+      }
+      else{
+        return ("uygun");
+      }
+    }
+  };
+}
 
 
 let vapur=new deniz_ulasimi("vapur",100,20);
