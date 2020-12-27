@@ -5,35 +5,6 @@ let yakin_saat = document.querySelector(".yakin_saat");
 let sefer_goster = document.querySelector(".sefer_goster");
 let enyakin_saat = document.querySelector(".enyakin_saat");
 
-function deniz_ulasimi(turu, kisi_kapasite, sefer_suresi) {
-  this.turu = turu;
-  this.kisi_kapasite = kisi_kapasite;
-  this.sefer_suresi = sefer_suresi;
-  this.kisi_kapasite_kontrol = function () {
-    if (this.turu === "vapur") {
-      if (this.kisi_kapasite > 200) {
-        return ("çok kalabalık binemezsin");
-      }
-      else{
-        return ("uygun");
-      }
-    }
-    else if(this.turu==="motor"){
-      if (this.kisi_kapasite > 100) {
-        return ("çok kalabalık binemezsin");
-      }
-      else{
-        return ("uygun");
-      }
-    }
-  };
-}
-
-
-let vapur=new deniz_ulasimi("vapur",100,20);
-console.log(vapur.kisi_kapasite_kontrol( ));
-
-
 addListener();
 
 //Listener Ekleme
@@ -62,12 +33,12 @@ function show() {
 
 show();
 
-// Vapur-Motor saatleri
+// Sefer Saatleri
 
 function dondur() {
   let arr = [];
   for (var i = 6; i < 24; i++) {
-    for (var j = 00; j < 60; j++) {
+    for (var j = 0; j < 60; j++) {
       if (j == 0 || j == 15 || j == 45) {
         var gelensaat = String(i);
         var gelendakika = String(j);
@@ -94,23 +65,56 @@ function vapursaat() {
 }
 
 function hesap(saat_dizi) {
-  let date = new Date(" 8/24/2010 15:16:10");
+  let date = new Date('8/24/2010 22:02:10');
 
   date = date.toString().split(" ");
   date = date[4].slice(0, 5);
   saat_dizi.unshift(date);
   saat_dizi = saat_dizi.sort();
-  console.log(saat_dizi);
   index = saat_dizi.indexOf(date);
-  return saat_dizi[index + 1];
+  if (index === 0) {
+    return false;
+  } else {
+    return saat_dizi[index + 1];
+  }
 }
 function istencikis() {
   a = dondur().reverse();
   hesap = hesap(a);
-  console.log(hesap);
-  div = document.createElement("div");
-  div.setAttribute("class", "text-center border rounded bg-warning mt-3");
-  hesap = `En Yakın Sefer Saat : ${hesap}`;
-  div.appendChild(document.createTextNode(hesap));
-  yakin_saat.appendChild(div);
+  if (hesap === false) {
+    div = document.createElement("div");
+    div.setAttribute("class", "text-center border rounded bg-danger mt-3 p-2");
+    hesap = `Bugünlük sefer bitti `;
+    div.appendChild(document.createTextNode(hesap));
+    yakin_saat.appendChild(div);
+  } else {
+    div = document.createElement("div");
+    div.setAttribute("class", "text-center border rounded bg-warning mt-3 p-2");
+    sonuc = `En Yakın Sefer Saat =  ${hesap}`;
+    div.appendChild(document.createTextNode(sonuc));
+    yakin_saat.appendChild(div);
+  
+  let varissaat = Number(hesap.split(":")[0]);
+  console.log(varissaat);
+  let varisdakika = Number(hesap.split(":")[1]);
+  console.log(varisdakika);
+  varisdakika = varisdakika + 20;
+              if (varisdakika > 60) {
+                varissaat = varissaat + 1;
+                varisdakika = varisdakika - 60;
+                varis=String(varissaat)+":"+String(varisdakika);
+                div = document.createElement("div");
+                div.setAttribute("class", "text-center border rounded bg-info mt-3 p-2 text-light");
+                div.appendChild(document.createTextNode(`Tahmini varış = ${varis}`));
+                yakin_saat.appendChild(div);
+              }
+              
+              else{
+                varis=String(varissaat)+":"+String(varisdakika);
+                div = document.createElement("div");
+                div.setAttribute("class", "text-center border rounded bg-info mt-3 p-2 text-light");
+                div.appendChild(document.createTextNode(`Tahmini varış =  ${varis}`));
+                yakin_saat.appendChild(div);
+              }
+            }
 }
