@@ -8,7 +8,7 @@
     <title>Document</title>
     <style>
         .h1{
-            background-image: url(istanbul.jpg);
+            background-image: url(beşiktaş.jpg);
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
@@ -33,13 +33,37 @@
         <h1 class=" text-success bg-white mt-3 display-4 "> Vapur & Motor 
             <small class="text-muted">Kadıköy-Beşiktaş <i class="fas fa-beer " style="color: #D68019;"></i></small>
         </h1>
-
+        
+         
         <div class="row mt-5">
             <div class="col-6 yakin_saat">
-                <button class="btn btn-dark btn-block enyakin_saat">İşten Çıkış Yaptım<i class="fas fa-shoe-prints ml-4 text-warning"></i></button>
+                <div class="form-group  w-100">
+                    <select class="form-control" id="iskele">
+                      <option value="1"> Beşiktaş</option>
+                      <option value="2">Kadıköy</option>
+                      
+                    </select>
+                  </div>
+                <button class="btn btn-dark btn-block enyakin_saat ">İşten Çıkış Yaptım<i class="fas fa-shoe-prints ml-4 text-warning"></i></button>
             </div>
-            <div class="col-6 sefer_goster">
-                <button class="btn btn-dark btn-block vapur_saat">Bütün Seferleri Göster<i class="fas fa-ship ml-4 text-warning"></i></button>
+            <div class="col-6 sefer_goster clearfix">
+                <button class="btn btn-dark btn-block vapur_saat  w-100">Bütün Seferleri Göster<i class="fas fa-ship ml-4 text-warning"></i></button>
+                <table class="table mt-3">
+                    <thead class="thead-success d-none">
+                      <tr>
+                        <th scope="col">İskele</th>
+                        <th scope="col">Vapur 1</th>
+                        <th scope="col">Vapur 2</th>
+                        <th scope="col">Vapur 3</th>
+                      </tr>
+                    </thead>
+                    <tbody class="tablo">
+                      
+                    </tbody>
+                  </table>
+                  
+                 
+               
             </div>
 
         </div>
