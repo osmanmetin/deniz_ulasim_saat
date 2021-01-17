@@ -128,7 +128,7 @@ function hesap(saat_dizi) {
   
   let array=[];
   let array1=[];
-  let date = new Date('8/24/2010 14:50:10' );
+  let date = new Date();
   date = date.toString().split(" ");
   date = date[4].slice(0, 5);
   date = date.replace(":", ",");
